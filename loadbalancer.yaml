@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: DataVission-deployment
+  name: datavission-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: DataVission
+      app: datavission
   template:
     metadata:
       labels:
-        app: DataVission
+        app: datavission
     spec:
       containers:
-      - name: DataVission-container
+      - name: datavission-container
         image: your-image:tag
         ports:
         - containerPort: 80
@@ -23,11 +23,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: DataVission-service
+  name: datavission-service
 spec:
   type: LoadBalancer
   selector:
-    app: DataVission
+    app: datavission
   ports:
   - protocol: TCP
     port: 80
@@ -38,7 +38,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name:DataVission-ingress
+  name:datavission-ingress
 spec:
   rules:
   - host: 8a43d28b0820e6f30221e3943ded5638k8sengineers.com
@@ -48,7 +48,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: DataVission-service
+            name: datavission-service
             port:
               number: 80
 
